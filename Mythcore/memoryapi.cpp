@@ -119,7 +119,7 @@ namespace Mythcore
 		//===================================================================================
 		DWORD GetClientSignature(char* chPattern)
 		{
-			static HMODULE hmModule = GetModuleHandleSafe("client.dll");
+			static HMODULE hmModule = GetModuleHandleSafe("client_panorama.dll");
 			static PIMAGE_DOS_HEADER pDOSHeader = (PIMAGE_DOS_HEADER)hmModule;
 			static PIMAGE_NT_HEADERS pNTHeaders = (PIMAGE_NT_HEADERS)(((DWORD)hmModule) + pDOSHeader->e_lfanew);
 			return dwFindPattern(((DWORD)hmModule) + pNTHeaders->OptionalHeader.BaseOfCode, ((DWORD)hmModule) + pNTHeaders->OptionalHeader.SizeOfCode, chPattern);

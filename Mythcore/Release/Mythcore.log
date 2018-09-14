@@ -1,0 +1,19 @@
+﻿  client.cpp
+  clientmode.cpp
+  config.cpp
+  crc32.cpp
+  CSGOSDK.cpp
+  cs_utils.cpp
+  dllmain.cpp
+  engine.cpp
+  hooks.cpp
+  math.cpp
+  memoryapi.cpp
+  netvars.cpp
+  offsets.cpp
+  pConVar.cpp
+  vmthooks.cpp
+  Создание кода
+  All 523 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Создание кода завершено
+  Mythcore.vcxproj -> C:\Users\OLLY\Desktop\Новая папка\Release\proxy.dll

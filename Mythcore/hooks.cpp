@@ -1,5 +1,4 @@
 #include "SDK.h"
-
 using namespace Mythcore::VMTHooks;
 using namespace Mythcore::CSUtils;
 using namespace Mythcore;
@@ -46,11 +45,10 @@ namespace Mythcore {
 		CreateInterfaceFn fnDatacache = CaptureFactory("datacache.dll");
 		CreateInterfaceFn fnVPhysics = CaptureFactory("vphysics.dll");
 		CreateInterfaceFn fnEngine = CaptureFactory("engine.dll");
-		CreateInterfaceFn fnClient = CaptureFactory("client.dll");
+		CreateInterfaceFn fnClient = CaptureFactory("client_panorama.dll");
 		CreateInterfaceFn fnServer = CaptureFactory("server.dll");
 		CreateInterfaceFn fnVgui2 = CaptureFactory("vgui2.dll");
 		CreateInterfaceFn fnVstdlib = CaptureFactory("vstdlib.dll");
-
 		Sleep(2000);
 
 		//Получаем интерфейсы
@@ -67,7 +65,7 @@ namespace Mythcore {
 		pPanel = reinterpret_cast<IPanel*>(CaptureInterface(fnVgui2, "VGUI_Panel009"));
 		pGameConsole = reinterpret_cast<IGameConsole*>(CaptureInterface(fnClient, "GameConsole004"));
 		pCvar = reinterpret_cast<ICvar*>(CaptureInterface(fnVstdlib, "VEngineCvar007"));
-		pInput = *(CInput**)((*(DWORD**)pClient)[15] + 0x1);
+		pInput = *reinterpret_cast<CInput**>(MemoryAPI::GetClientSignature("B9 ? ? ? ? F3 0F 11 04 24 FF 50 10") + 0x1);
 		pGlobals = **(CGlobalVarsBase***)((*(DWORD**)pClient)[0] + 0x1B);
 		InitOffsets();
 
@@ -94,7 +92,7 @@ namespace Mythcore {
 		HMODULE hD3d = NULL;
 		do {
 			hModEngine = GetModuleHandleA("engine.dll");
-			hModClient = GetModuleHandleA("client.dll");
+			hModClient = GetModuleHandleA("client_panorama.dll");
 			hD3d = GetModuleHandleA("shaderapidx9");
 			Sleep(500);
 		} while (!hModEngine || !hModClient || !hD3d);

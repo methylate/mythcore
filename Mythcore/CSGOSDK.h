@@ -986,13 +986,13 @@ namespace Mythcore
 
 			int GetHitSet();
 
-			int GetGlowIndex()
+			/*int GetGlowIndex()
 			{
 				static DWORD offset = 0;
 				if (!offset)
 					offset = pNetworkedVariables->GetNetvar("DT_CSPlayer", "m_flFlashDuration");
 				return *reinterpret_cast<int*>((DWORD)this + offset + 0x18); // flashduration + 0x18
-			}
+			}*/
 
 			IClientColidable* GetColidable2()//member of baseentity
 			{
